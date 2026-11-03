@@ -1,0 +1,11 @@
+# Compatibility and evidence boundaries
+
+Prepared 2026-11-02. Required helper baseline: Python 3.10+ (standard library), PowerShell 7 on Windows for the launcher and its tests. Core instructions and state paths are platform-independent; Windows PhotoCraft binaries and ACL handling are not. Python helper tests were run on Windows with Python 3.10.6. Exact PowerShell version and check counts appear in the validation report.
+
+PhotoCraft guidance is pinned to 0.17.0 Windows x64. GUI/CLI names, wrapper directory, control flags and bridge flags were inspected in official version-pinned sources linked in [PhotoCraft setup](photocraft.md). Public release metadata supplied the ZIP size/digest. Partial ZIP inspection was attempted but the server rejected range access; archive contents were therefore verified from packaging source, not by downloading the 126 MB archive. No binary is bundled or executed.
+
+Unity's [official CLI documentation](https://docs.unity.com/en-us/unity-cli) labels the CLI experimental. Its [reference](https://docs.unity.com/en-us/unity-cli/unity-cli-reference) directs users to installed help for authoritative syntax. This starter intentionally discovers creation/build/targeting syntax rather than pinning an untested beta command recipe. The local Unity CLI skill was consulted for connected-Editor targeting and verification practices; no vendor skill text was copied. Live CLI control depends on a compatible [Pipeline package](https://docs.unity.com/en-us/unity-cli/unity-pipeline/unity-pipeline-package). The chosen Editor, render pipeline, target modules and packages must be verified per game.
+
+Blender should be a supported separately installed version suitable for the project's export pipeline. Verify its own version and the installed export operators before scripting. No Blender version, GPU, FBX settings, Unity project or device build was runtime-qualified during packaging. No running Editor was queried or changed, and no tools or credentials were installed/created.
+
+The helper's project-shape and identity checks are protective checks, not a Unity validator or security boundary against another process modifying files concurrently. Workspace edits are intended to be serialized. Keep backups and review actual tool state after crashes or uncertain outcomes.
